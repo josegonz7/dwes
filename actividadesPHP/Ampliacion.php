@@ -93,5 +93,60 @@ if (isset($_GET['cantidad'])) {
 } else {
     echo "Por favor, introduce una cantidad en la URL (ej: ?cantidad=139).";
 }
+
 ?>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AMP-7. Registro de Notas</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .destacado-verde { background-color: #d4edda; color: #155724; }
+        .destacado-rojo { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h2>Registro de Notas del Alumno</h2>
+    <form method="post" action="">
+        <label for="nombre">Nombre del Alumno:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="matematicas">Matemáticas:</label><br>
+        <input type="number" step="0.01" min="0" max="10" id="matematicas" name="matematicas" required><br><br>
+        <label for="lengua">Lengua:</label><br>
+        <input type="number" step="0.01" min="0" max="10" id="lengua" name="lengua" required><br><br>
+        <label for="ciencias">Ciencias:</label><br>
+        <input type="number" step="0.01" min="0" max="10" id="ciencias" name="ciencias" required><br><br>
+        <button type="submit">Calcular Promedio</button>
+    </form>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = htmlspecialchars($_POST['nombre']);
+        $matematicas = floatval($_POST['matematicas']);
+        $lengua = floatval($_POST['lengua']);
+        $ciencias = floatval($_POST['ciencias']);
+        $promedio = ($matematicas + $lengua + $ciencias) / 3;
+        $claseFila = '';
+        if ($promedio >= 7) {
+            $claseFila = 'destacado-verde';
+        } elseif ($promedio < 4) {
+            $claseFila = 'destacado-rojo';
+        }
+        echo "<h3>Resultados Evaluation:</h3>";
+        echo "<table>";
+        echo "<tr><th>Alumno</th><th>Matemáticas</th><th>Lengua</th><th>Ciencias</th><th>Promedio</th></tr>";
+        echo "<tr class='$claseFila'>";
+        echo "<td>$nombre</td>";
+        echo "<td>$matematicas</td>";
+        echo "<td>$lengua</td>";
+        echo "<td>$ciencias</td>";
+        echo "<td>" . number_format($promedio, 2) . "</td>";
+        echo "</tr>";
+        echo "</table>";
+    }
+    ?>
+</body>
+</html>
