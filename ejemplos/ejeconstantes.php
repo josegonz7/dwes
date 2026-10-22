@@ -1,9 +1,25 @@
-<?php
-define("nombre", "Juan");
-define("edad", 30);
-echo "El nombre es: " . nombre . "<br>";
-echo "La edad es: " . edad . "<br>";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+        define("NOMBRE","jose");
+        // echo NOMBRE;
+    ?>
 
-echo __FILE__ . "<br>";
-echo __LINE__ . "<br>";
-?>
+
+    <?php
+        echo mostrarNombre();
+    ?>
+
+    <?php
+        function mostrarNombre() {
+            return NOMBRE;
+        }
+    ?>
+</body>
+</html>
