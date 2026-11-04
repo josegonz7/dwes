@@ -23,7 +23,7 @@
         function linea($etiqueta, $valor) {
             global $moneda;
 
-            echo $etiqueta . ":" . $valor . "</br>";
+            echo "<p><strong>{$etiqueta}:</strong> " . number_format($valor, 2) . " {$moneda}</p>";
         }
 
         echo "<h2>Resumen del pedido: </h2>";

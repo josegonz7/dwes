@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Recepción - Ingreso de Reservas</title>
+
+</head>
+<body>
+  <h1>Ingreso de Reservas Diarias</h1>
+  <form action="procesar.php" method="post">
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Noches</th>
+          <th>Precio/Noche (€)</th>
+          <th>Tipo Cliente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Generamos 3 filas de ejemplo -->
+        <tr>
+          <td><input type="text" name="nombre[]" required></td>
+          <td><input type="number" name="noches[]" min="1" required></td>
+          <td><input type="number" step="0.01" name="precio[]" min="1" required></td>
+          <td>
+            <select name="tipo[]">
+              <option value="estandar">Estándar</option>
+              <option value="vip">VIP</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" name="nombre[]" required></td>
+          <td><input type="number" name="noches[]" min="1" required></td>
+          <td><input type="number" step="0.01" name="precio[]" min="1" required></td>
+          <td>
+            <select name="tipo[]">
+              <option value="estandar">Estándar</option>
+              <option value="vip">VIP</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" name="nombre[]" required></td>
+          <td><input type="number" name="noches[]" min="1" required></td>
+          <td><input type="number" step="0.01" name="precio[]" min="1" required></td>
+          <td>
+            <select name="tipo[]">
+              <option value="estandar">Estándar</option>
+              <option value="vip">VIP</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit">Procesar Reservas</button>
+  </form>
+</body>
+</html>
